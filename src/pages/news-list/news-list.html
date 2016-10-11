@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>News</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>News list</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="cards-bg" *ngIf="news">
+  <ion-card *ngFor="let oneNews of news | async" [style.display]="oneNews.archived?'none':'inherit'">
+    <ion-card-content>
+      <h2 class="card-title">
+        {{oneNews.title}}
+      </h2>
+      <p>
+        {{oneNews.body}}
+      </p>
+    </ion-card-content>
+    <ion-row no-padding>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-left (click)="toArchive(oneNews)">
+          <ion-icon name='ios-archive'></ion-icon>
+          Archive
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
